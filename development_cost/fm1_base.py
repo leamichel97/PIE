@@ -31,7 +31,7 @@ class Fm1Base(ExplicitComponent):
 
     def setup(self):
         self.add_input('M_PA_percentage', val=0.05, desc='')
-        self.add_input('TFU', val=1.0, desc='')
+        self.add_input('TFU', val=np.ones((32,)), desc='')
 
         self.add_output('FM1', val=np.ones((32,)), desc='')
 

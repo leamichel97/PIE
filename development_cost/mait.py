@@ -14,8 +14,15 @@ class Mait(MaitBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['MAIT'] = np.ones((32,))   
+            FM1 = inputs['FM1']      
+            HW = inputs['HW']  
+            Ld = inputs['Ld']
+            STH = inputs['STH']
+
+            MAIT = FM1 * (STH + Ld * HW)
+
+            outputs['MAIT'] = MAIT  
+        return outputs
 
 # Reminder: inputs of compute()
 #   

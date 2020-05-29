@@ -14,8 +14,19 @@ class Total(TotalBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['Cdev'] = np.ones((32,))   
+            Cp = inputs['Cp']
+            f0 = inputs['f0'] 
+            f1 = inputs['f1'] 
+            f10 = inputs['f10']
+            f11 = inputs['f11'] 
+            f3 = inputs['f3']    
+            MAIT = inputs['MAIT']
+            PO = inputs['PO']
+
+            Cdev = Cp * (P0 + MAIT) * f0 * f1 * f3 * f10 * f11
+
+            outputs['Cdev'] = Cdev
+        return outputs
 
 # Reminder: inputs of compute()
 #   

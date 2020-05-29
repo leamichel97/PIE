@@ -14,13 +14,21 @@ class Tfu(TfuBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['TFU'] = 1.0   
+            a = inputs['a']  
+            b = inputs['b']     
+            Mass = inputs['Mass']
+            HW = inputs['HW']
+
+            TFU = HW * a * Mass**b
+
+            outputs['TFU'] = TFU  
+        return outputs 
 
 # Reminder: inputs of compute()
 #   
 #       inputs['a'] -> shape: (32,), type: Float    
 #       inputs['b'] -> shape: (32,), type: Float    
+#       inputs['HW'] -> shape: 1, type: Float    
 #       inputs['Mass'] -> shape: (32,), type: Float      
 	
 # To declare partial derivatives computation ...
@@ -32,6 +40,7 @@ class Tfu(TfuBase):
 #    def compute_partials(self, inputs, partials):
 #        """ Jacobian for Tfu """
 #   
-#       	partials['TFU', 'a'] = np.zeros((1, 32))
-#       	partials['TFU', 'b'] = np.zeros((1, 32))
-#       	partials['TFU', 'Mass'] = np.zeros((1, 32))        
+#       	partials['TFU', 'a'] = np.zeros((32, 32))
+#       	partials['TFU', 'b'] = np.zeros((32, 32))
+#       	partials['TFU', 'HW'] = np.zeros((32, 1))
+#       	partials['TFU', 'Mass'] = np.zeros((32, 32))        

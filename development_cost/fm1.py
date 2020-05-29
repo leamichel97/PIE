@@ -14,13 +14,22 @@ class Fm1(Fm1Base):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['FM1'] = np.ones((32,))   
+            M_PA_percentage = inputs['M_PA_percentage']   
+            TFU = inputs['TFU'] 
+            FM1 = np.zeros((32,)) # initialisation matrice FM1 de dimension 32,1 avec des zéros
+
+            for i in range(len(TFU)) : # Pour i allant de 0  à 31
+
+                if TFU[i] != 0 : # Si TFU est différent de 0, pas besoin de mettre le cas où TFU = 0 car FM1 initialisé à 0
+                    FM1[i] = TFU[i] * (1 - M_PA_percentage) 
+
+            outputs['FM1'] = FM1  
+            return outputs
 
 # Reminder: inputs of compute()
 #   
 #       inputs['M_PA_percentage'] -> shape: 1, type: Float    
-#       inputs['TFU'] -> shape: 1, type: Float      
+#       inputs['TFU'] -> shape: (32,), type: Float      
 	
 # To declare partial derivatives computation ...
 # 
@@ -32,4 +41,4 @@ class Fm1(Fm1Base):
 #        """ Jacobian for Fm1 """
 #   
 #       	partials['FM1', 'M_PA_percentage'] = np.zeros((32, 1))
-#       	partials['FM1', 'TFU'] = np.zeros((32, 1))        
+#       	partials['FM1', 'TFU'] = np.zeros((32, 32))        

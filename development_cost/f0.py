@@ -14,8 +14,12 @@ class F0(F0Base):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['f0'] = 1.0   
+            Ns = inputs['Ns']  
+
+            f0 = 1.05 ** Ns
+
+            outputs['f0'] = f0
+        return outputs   
 
 # Reminder: inputs of compute()
 #   

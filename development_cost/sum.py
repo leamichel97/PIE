@@ -14,8 +14,12 @@ class Sum(SumBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['CdevSum'] = 1.0   
+            Cdev = inputs['Cdev']   
+
+            CdevSum = sum(Cdev)
+
+            outputs['CdevSum'] = CdevSum
+        return outputs   
 
 # Reminder: inputs of compute()
 #   

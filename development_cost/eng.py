@@ -14,8 +14,13 @@ class Eng(EngBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['ENG'] = np.ones((32,))   
+            DD = inputs['DD']
+            FM1 = inputs['FM1']
+
+            ENG = DD * FM1
+
+            outputs['ENG'] = ENG
+        return outputs  
 
 # Reminder: inputs of compute()
 #   

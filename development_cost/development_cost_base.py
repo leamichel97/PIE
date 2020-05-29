@@ -63,7 +63,7 @@ class DevelopmentCostBase(Group):
 
     def setup(self): 
 
-        self.add_subsystem('Tfu', self.create_tfu(), promotes=['a', 'b', 'Mass', 'TFU'])
+        self.add_subsystem('Tfu', self.create_tfu(), promotes=['a', 'b', 'HW', 'Mass', 'TFU'])
         self.add_subsystem('Fm1', self.create_fm1(), promotes=['FM1', 'M_PA_percentage', 'TFU'])
         self.add_subsystem('Mait', self.create_mait(), promotes=['FM1', 'HW', 'Ld', 'MAIT', 'STH'])
         self.add_subsystem('Mpa', self.create_mpa(), promotes=['MAIT', 'MPA', 'M_PA_percentage'])

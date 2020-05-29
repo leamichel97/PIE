@@ -14,8 +14,14 @@ class Mpa(MpaBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['MPA'] = 1.0   
+            MAIT = inputs['MAIT'] 
+            M_PA_percentage = inputs['M_PA_percentage']
+            ENG = inputs ['ENG']
+
+            MPA = (MAIT * ENG) * M_PA_percentage
+
+            outputs['MPA'] = MPA 
+        return outputs 
 
 # Reminder: inputs of compute()
 #   

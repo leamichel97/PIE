@@ -14,8 +14,13 @@ class Po(PoBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['PO'] = np.ones((32,))   
+            ENG = inputs['ENG']      
+            MPA = inputs['MPA']
+
+            PO = ENG * MPA
+
+            outputs['PO'] = PO
+        return outputs
 
 # Reminder: inputs of compute()
 #   
