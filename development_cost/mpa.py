@@ -16,11 +16,11 @@ class Mpa(MpaBase):
         else:
             MAIT = inputs['MAIT'] 
             M_PA_percentage = inputs['M_PA_percentage']
-            ENG = inputs ['ENG']
+            #ENG = inputs ['ENG']
 
-            MPA = (MAIT * ENG) * M_PA_percentage
+            #MPA = (MAIT * ENG) * M_PA_percentage
 
-            outputs['MPA'] = MPA 
+            outputs['MPA'] = 0
         return outputs 
 
 # Reminder: inputs of compute()
