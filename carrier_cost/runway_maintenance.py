@@ -14,8 +14,13 @@ class RunwayMaintenance(RunwayMaintenanceBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            CostRunwayMaint = inputs['CostRunwayMaint']
+            Launches = inputs['Launches']
+
+            C_RunwayMaint = CostRunwayMaint / Launches
                     
-            outputs['C_RunwayMaint'] = 1.0   
+            outputs['C_RunwayMaint'] = C_RunwayMaint
+        return outputs
 
 # Reminder: inputs of compute()
 #   

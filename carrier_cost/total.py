@@ -14,8 +14,14 @@ class Total(TotalBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            C_aircraft = inputs['C_aircraft']
+            C_runway = inputs['C_runway']
+            C_RunwayMaint = inputs['C_RunwayMaint']
+
+            C_carrier = C_aircraft + C_runway + C_RunwayMaint
                     
-            outputs['C_carrier'] = 1.0   
+            outputs['C_carrier'] = C_carrier
+        return outputs  
 
 # Reminder: inputs of compute()
 #   

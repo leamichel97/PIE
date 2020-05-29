@@ -14,8 +14,15 @@ class Runway(RunwayBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            ExtRunway = inputs['ExtRunway']
+            Launches = inputs['Launches']
+            OnekmRunway = inputs['OnekmRunway']
+            YearsRunway = inputs['YearsRunway']
+
+            C_runway = ((OnekmRunway * ExtRunway) / YearsRunway) / Launches
                     
-            outputs['C_runway'] = 1.0   
+            outputs['C_runway'] = C_runway
+        return outputs 
 
 # Reminder: inputs of compute()
 #   

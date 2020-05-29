@@ -14,8 +14,13 @@ class AircraftFlight(AircraftFlightBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            CostAircraft = inputs['CostAircraft']
+            HoursAircraft = inputs['HoursAircraft']
+
+            C_aircraft = CostAircraft / HoursAircraft
                     
-            outputs['C_aircraft'] = 1.0   
+            outputs['C_aircraft'] = C_aircraft  
+        return outputs
 
 # Reminder: inputs of compute()
 #   

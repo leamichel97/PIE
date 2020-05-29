@@ -14,8 +14,14 @@ class IndirectOperationsCosts(IndirectOperationsCostsBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            LpA = inputs['LpA']
+            S = inputs['S']
+            W = inputs['W']
+
+            C_IO = (40 * S + 24) * LpA**-0.379 * W /1000
                     
-            outputs['C_IO'] = 1.0   
+            outputs['C_IO'] = C_IO
+        return outputs   
 
 # Reminder: inputs of compute()
 #   
