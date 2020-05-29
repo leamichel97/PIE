@@ -31,7 +31,7 @@ class PoBase(ExplicitComponent):
 
     def setup(self):
         self.add_input('ENG', val=np.ones((32,)), desc='')
-        self.add_input('MPA', val=1.0, desc='')
+        self.add_input('MPA', val=np.ones((32,)), desc='')
 
         self.add_output('PO', val=np.ones((32,)), desc='')
 

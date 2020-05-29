@@ -34,7 +34,7 @@ class MpaBase(ExplicitComponent):
         self.add_input('MAIT', val=np.ones((32,)), desc='')
         self.add_input('M_PA_percentage', val=0.05, desc='')
 
-        self.add_output('MPA', val=1.0, desc='')
+        self.add_output('MPA', val=np.ones((32,)), desc='')
 
 
 
