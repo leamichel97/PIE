@@ -21,7 +21,6 @@ class AircraftFlight(AircraftFlightBase):
                     
             outputs['C_aircraft'] = C_aircraft  
         return outputs
-
 # Reminder: inputs of compute()
 #   
 #       inputs['CostAircraft'] -> shape: 1, type: Float    

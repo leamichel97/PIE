@@ -19,7 +19,7 @@ class Total(TotalBase):
             CprodTotal = sum(Cprod)
 
             outputs['CprodTotal'] = CprodTotal
-        return outputs   
+        return outputs 
 
 # Reminder: inputs of compute()
 #   

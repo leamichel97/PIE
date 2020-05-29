@@ -22,7 +22,7 @@ class Runway(RunwayBase):
             C_runway = ((OnekmRunway * ExtRunway) / YearsRunway) / Launches
                     
             outputs['C_runway'] = C_runway
-        return outputs 
+        return outputs  
 
 # Reminder: inputs of compute()
 #   

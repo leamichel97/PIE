@@ -21,8 +21,7 @@ class IndirectOperationsCosts(IndirectOperationsCostsBase):
             C_IO = (40 * S + 24) * LpA**-0.379 * W /1000
                     
             outputs['C_IO'] = C_IO
-        return outputs   
-
+        return outputs 
 # Reminder: inputs of compute()
 #   
 #       inputs['LpA'] -> shape: 1, type: Float    

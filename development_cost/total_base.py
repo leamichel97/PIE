@@ -36,9 +36,7 @@ class TotalBase(ExplicitComponent):
         self.add_input('f10', val=0.85, desc='')
         self.add_input('f11', val=0.50, desc='')
         self.add_input('f3', val=1, desc='')
-        self.add_input('FM1', val=np.ones((32,)), desc='')
         self.add_input('MAIT', val=np.ones((32,)), desc='')
-        self.add_input('MPA', val=1.0, desc='')
         self.add_input('PO', val=np.ones((32,)), desc='')
 
         self.add_output('Cdev', val=np.ones((32,)), desc='')

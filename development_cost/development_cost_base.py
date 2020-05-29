@@ -19,8 +19,8 @@ from openmdao import __version__ as OPENMDAO_VERSION
 from development_cost.tfu import Tfu
 from development_cost.fm1 import Fm1
 from development_cost.mait import Mait
-from development_cost.mpa import Mpa
 from development_cost.eng import Eng
+from development_cost.mpa import Mpa
 from development_cost.po import Po
 from development_cost.f0 import F0
 from development_cost.total import Total
@@ -66,11 +66,11 @@ class DevelopmentCostBase(Group):
         self.add_subsystem('Tfu', self.create_tfu(), promotes=['a', 'b', 'HW', 'Mass', 'TFU'])
         self.add_subsystem('Fm1', self.create_fm1(), promotes=['FM1', 'M_PA_percentage', 'TFU'])
         self.add_subsystem('Mait', self.create_mait(), promotes=['FM1', 'HW', 'Ld', 'MAIT', 'STH'])
-        self.add_subsystem('Mpa', self.create_mpa(), promotes=['MAIT', 'MPA', 'M_PA_percentage'])
         self.add_subsystem('Eng', self.create_eng(), promotes=['DD', 'ENG', 'FM1'])
+        self.add_subsystem('Mpa', self.create_mpa(), promotes=['ENG', 'MAIT', 'MPA', 'M_PA_percentage'])
         self.add_subsystem('Po', self.create_po(), promotes=['ENG', 'MPA', 'PO'])
         self.add_subsystem('F0', self.create_f0(), promotes=['f0', 'Ns'])
-        self.add_subsystem('Total', self.create_total(), promotes=['Cdev', 'Cp', 'f0', 'f1', 'f10', 'f11', 'f3', 'FM1', 'MAIT', 'MPA', 'PO'])
+        self.add_subsystem('Total', self.create_total(), promotes=['Cdev', 'Cp', 'f0', 'f1', 'f10', 'f11', 'f3', 'MAIT', 'PO'])
         self.add_subsystem('Sum', self.create_sum(), promotes=['Cdev', 'CdevSum'])
 
     def create_tfu(self):
@@ -79,10 +79,10 @@ class DevelopmentCostBase(Group):
     	return Fm1()
     def create_mait(self):
     	return Mait()
-    def create_mpa(self):
-    	return Mpa()
     def create_eng(self):
     	return Eng()
+    def create_mpa(self):
+    	return Mpa()
     def create_po(self):
     	return Po()
     def create_f0(self):
@@ -105,11 +105,11 @@ class DevelopmentCostFactoryBase(object):
     def create_development_cost_mait():
     	return Mait()
     @staticmethod
-    def create_development_cost_mpa():
-    	return Mpa()
-    @staticmethod
     def create_development_cost_eng():
     	return Eng()
+    @staticmethod
+    def create_development_cost_mpa():
+    	return Mpa()
     @staticmethod
     def create_development_cost_po():
     	return Po()

@@ -38,8 +38,8 @@ from carrier_cost.total import Total
 from development_cost.tfu import Tfu
 from development_cost.fm1 import Fm1
 from development_cost.mait import Mait
-from development_cost.mpa import Mpa
 from development_cost.eng import Eng
+from development_cost.mpa import Mpa
 from development_cost.po import Po
 from development_cost.f0 import F0
 from development_cost.total import Total
@@ -204,11 +204,11 @@ class CostFunctionFactoryBase(object):
     def create_development_cost_mait():
     	return Mait()
     @staticmethod
-    def create_development_cost_mpa():
-    	return Mpa()
-    @staticmethod
     def create_development_cost_eng():
     	return Eng()
+    @staticmethod
+    def create_development_cost_mpa():
+    	return Mpa()
     @staticmethod
     def create_development_cost_po():
     	return Po()
