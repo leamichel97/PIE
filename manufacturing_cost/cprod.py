@@ -14,8 +14,17 @@ class Cprod(CprodBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['Cprod'] = np.ones((32,))   
+            Cp = inputs['Cp']  
+            f10 = inputs['f10']     
+            f11 = inputs['f11']  
+            FM1 = inputs['FM1']   
+            Lm = inputs['Lm'] 
+            M_PA_percentage = inputs['M_PA_percentage'] 
+
+            Cprod = Cp * (FM1 * Lm + M_PA_percentage) * f10 * f11
+
+            outputs['Cprod'] = Cprod
+        return outputs 
 
 # Reminder: inputs of compute()
 #   

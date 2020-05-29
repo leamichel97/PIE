@@ -14,8 +14,13 @@ class Lm(LmBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['Lm'] = 1.0   
+            n = inputs['n']     
+            p = inputs['p']   
+
+            Lm = n ** (np.log(p)/np.log(2))
+
+            outputs['Lm'] = Lm 
+        return outputs 
 
 # Reminder: inputs of compute()
 #   

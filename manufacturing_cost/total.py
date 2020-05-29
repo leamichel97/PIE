@@ -14,8 +14,12 @@ class Total(TotalBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['CprodTotal'] = 1.0   
+            Cprod = inputs['Cprod']   
+
+            CprodTotal = sum(Cprod)
+
+            outputs['CprodTotal'] = CprodTotal
+        return outputs   
 
 # Reminder: inputs of compute()
 #   
