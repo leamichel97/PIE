@@ -21,6 +21,8 @@ class PropellantCost(PropellantCostBase):
             Mpres = inputs['Mpres'] 
             r = inputs['r'] 
 
+            Cprop = ( (Mp/(r+1))*Cf + (Mp - Mp/(r+1)) * Cox + Mpres * Cpres) / 1000
+
             outputs['Cprop'] = Cprop
         return outputs  
 
