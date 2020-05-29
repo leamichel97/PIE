@@ -30,6 +30,7 @@ class TotalCostBase(ExplicitComponent):
                     self._impl = getattr(module, impl['class'])()
 
     def setup(self):
+        self.add_input('CdevSum', val=1.0, desc='')
         self.add_input('CprodTotal', val=1.0, desc='')
         self.add_input('C_carrier', val=1.0, desc='')
         self.add_input('C_DO', val=1.0, desc='')

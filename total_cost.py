@@ -14,8 +14,16 @@ class TotalCost(TotalCostBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            CprodTotal = inputs['CprodTotal']
+            C_carrier = inputs['C_carrier']
+            C_DO = inputs['C_DO']
+            C_IO = inputs['C_IO']
+            CdevSum = inputs['CdevSum']
+
+            C_TOTAL = CprodTotal + C_carrier + C_DO + C_IO + CdevSum
                     
-            outputs['C_TOTAL'] = 1.0   
+            outputs['C_TOTAL'] = C_TOTAL
+        return outputs
 
 # Reminder: inputs of compute()
 #   
