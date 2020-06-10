@@ -17,7 +17,7 @@ class AircraftFlight(AircraftFlightBase):
             CostAircraft = inputs['CostAircraft']
             HoursAircraft = inputs['HoursAircraft']
 
-            C_aircraft = CostAircraft / HoursAircraft
+            C_aircraft = CostAircraft * HoursAircraft
                     
             outputs['C_aircraft'] = C_aircraft  
         return outputs

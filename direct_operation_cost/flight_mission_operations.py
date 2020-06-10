@@ -20,7 +20,7 @@ class FlightMissionOperations(FlightMissionOperationsBase):
             Q_N = inputs['Q_N']
             W = inputs['W']
 
-            Cmission = W * 20 * Q_N * LpA**0.65 * L * f8 / 1000 
+            Cmission = W * 20 * Q_N * (LpA**-0.65) * L * f8 / 1000 
 
             outputs['Cmission'] = Cmission
         return outputs   

@@ -17,7 +17,7 @@ class Po(PoBase):
             ENG = inputs['ENG']      
             MPA = inputs['MPA']
 
-            PO = ENG * MPA
+            PO = ENG + MPA
 
             outputs['PO'] = PO
         return outputs

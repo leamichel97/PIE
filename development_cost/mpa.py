@@ -18,7 +18,7 @@ class Mpa(MpaBase):
             M_PA_percentage = inputs['M_PA_percentage']
             ENG = inputs ['ENG']
 
-            MPA = (MAIT * ENG) * M_PA_percentage
+            MPA = (MAIT + ENG) * M_PA_percentage
 
             outputs['MPA'] = MPA
         return outputs 
