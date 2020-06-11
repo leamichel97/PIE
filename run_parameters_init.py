@@ -37,10 +37,11 @@ def initialize(mda):
   mda['Mp'] = 24410
   mda['Mpres'] = 50
   mda['M_PA_percentage'] = 0.0525
-  mda['N'] = 30
+  mda['n'] = 30
   mda['Ns'] = 3.5
   mda['OnekmRunway'] = 7000
-  mda['P'] = 0.90
+  mda['p'] = 0.90
+  mda['PayCap'] = 150
   mda['Q_N'] = 1.40
   mda['r'] = 0.12
   mda['S'] = 0.20
