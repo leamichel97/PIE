@@ -61,7 +61,7 @@ class DirectOperationCostBase(Group):
         self.add_subsystem('PropellantCost', self.create_propellant_cost(), promotes=['Cf', 'Cox', 'Cpres', 'Cprop', 'Mp', 'Mpres', 'r'])
         self.add_subsystem('FlightMissionOperations', self.create_flight_mission_operations(), promotes=['Cmission', 'f8', 'L', 'LpA', 'Q_N', 'W'])
         self.add_subsystem('TransportationCost', self.create_transportation_cost(), promotes=['Ctransp', 'M0', 'Ts'])
-        self.add_subsystem('FeesInsuranceCost', self.create_fees_insurance_cost(), promotes=['C_FeesInsurance', 'C_PL', 'F', 'I', 'P'])
+        self.add_subsystem('FeesInsuranceCost', self.create_fees_insurance_cost(), promotes=['C_FeesInsurance', 'C_PL', 'F', 'I', 'p'])
         self.add_subsystem('Total', self.create_total(), promotes=['Cmission', 'Cprop', 'Ctransp', 'C_DO', 'C_FeesInsurance', 'C_GO'])
 
     def create_ground_operation(self):
