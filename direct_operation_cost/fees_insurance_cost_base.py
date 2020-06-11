@@ -33,7 +33,7 @@ class FeesInsuranceCostBase(ExplicitComponent):
         self.add_input('C_PL', val=5.51, desc='')
         self.add_input('F', val=1220, desc='')
         self.add_input('I', val=100, desc='')
-        self.add_input('p', val=150, desc='')
+        self.add_input('PayCap', val=150, desc='')
 
         self.add_output('C_FeesInsurance', val=1.0, desc='')
 

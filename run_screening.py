@@ -56,6 +56,8 @@ else:
 
 pb.model.add_design_var('LpA', lower=-sys.float_info.max, upper=sys.float_info.max)
 pb.model.add_design_var('Ns', lower=-sys.float_info.max, upper=sys.float_info.max)
+pb.model.add_design_var('p', lower=-sys.float_info.max, upper=sys.float_info.max)
+pb.model.add_design_var('PayCap', lower=-sys.float_info.max, upper=sys.float_info.max)
 
 
 pb.model.add_objective('C_TOTAL')
@@ -72,12 +74,16 @@ n = len(cases)
 data = {'inputs': {}, 'outputs': {} }
 data['inputs']['LpA'] = np.zeros((n,)+(1,))
 data['inputs']['Ns'] = np.zeros((n,)+(1,))
+data['inputs']['p'] = np.zeros((n,)+(1,))
+data['inputs']['PayCap'] = np.zeros((n,)+(1,))
 data['outputs']['C_TOTAL'] = np.zeros((n,)+(1,))
 
 for i in range(len(cases)):
     case = reader.get_case(cases[i])
     data['inputs']['LpA'][i,:] = case.outputs['LpA']
     data['inputs']['Ns'][i,:] = case.outputs['Ns']
+    data['inputs']['p'][i,:] = case.outputs['p']
+    data['inputs']['PayCap'][i,:] = case.outputs['PayCap']
     data['outputs']['C_TOTAL'][i,:] = case.outputs['C_TOTAL']
 
 salib_pb = pb.driver.get_salib_problem()

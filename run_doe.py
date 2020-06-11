@@ -44,6 +44,8 @@ else:
 
 pb.model.add_design_var('LpA', lower=-sys.float_info.max, upper=sys.float_info.max)
 pb.model.add_design_var('Ns', lower=-sys.float_info.max, upper=sys.float_info.max)
+pb.model.add_design_var('p', lower=-sys.float_info.max, upper=sys.float_info.max)
+pb.model.add_design_var('PayCap', lower=-sys.float_info.max, upper=sys.float_info.max)
 
 
 pb.model.add_objective('C_TOTAL')
@@ -61,6 +63,8 @@ data = {'inputs': {}, 'outputs': {} }
 
 data['inputs']['LpA'] = np.zeros((n,)+(1,))
 data['inputs']['Ns'] = np.zeros((n,)+(1,))
+data['inputs']['p'] = np.zeros((n,)+(1,))
+data['inputs']['PayCap'] = np.zeros((n,)+(1,))
 
 data['outputs']['C_TOTAL'] = np.zeros((n,)+(1,))
 
@@ -68,20 +72,32 @@ for i in range(len(cases)):
     case = reader.get_case(cases[i])
     data['inputs']['LpA'][i,:] = case.outputs['LpA']
     data['inputs']['Ns'][i,:] = case.outputs['Ns']
+    data['inputs']['p'][i,:] = case.outputs['p']
+    data['inputs']['PayCap'][i,:] = case.outputs['PayCap']
     data['outputs']['C_TOTAL'][i,:] = case.outputs['C_TOTAL']
       
 
 output = data['outputs']['C_TOTAL'].reshape(-1)
 
 input = data['inputs']['LpA'].reshape(-1)
-plt.subplot(1, 2, 1)
+plt.subplot(1, 4, 1)
 plt.plot(input[0::1], output[0::1], '.')
 plt.ylabel('C_TOTAL')
 plt.xlabel('LpA')
 
 input = data['inputs']['Ns'].reshape(-1)
-plt.subplot(1, 2, 2)
+plt.subplot(1, 4, 2)
 plt.plot(input[0::1], output[0::1], '.')
 plt.xlabel('Ns')
+
+input = data['inputs']['p'].reshape(-1)
+plt.subplot(1, 4, 3)
+plt.plot(input[0::1], output[0::1], '.')
+plt.xlabel('p')
+
+input = data['inputs']['PayCap'].reshape(-1)
+plt.subplot(1, 4, 4)
+plt.plot(input[0::1], output[0::1], '.')
+plt.xlabel('PayCap')
 
 plt.show()

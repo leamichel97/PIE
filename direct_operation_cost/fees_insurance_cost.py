@@ -17,19 +17,19 @@ class FeesInsuranceCost(FeesInsuranceCostBase):
             C_PL = inputs['C_PL']
             F = inputs['F']
             I = inputs['I']
-            P = inputs['P']
+            PayCap = inputs['PayCap']
 
-            C_FeesInsurance = I + F + C_PL*P / 1000
+            C_FeesInsurance = I + F + C_PL*PayCap / 1000
                     
             outputs['C_FeesInsurance'] = C_FeesInsurance
-        return outputs  
+        return outputs
 
 # Reminder: inputs of compute()
 #   
 #       inputs['C_PL'] -> shape: 1, type: Float    
 #       inputs['F'] -> shape: 1, type: Float    
 #       inputs['I'] -> shape: 1, type: Float    
-#       inputs['P'] -> shape: 1, type: Float      
+#       inputs['PayCap'] -> shape: 1, type: Float      
 	
 # To declare partial derivatives computation ...
 # 
@@ -43,4 +43,4 @@ class FeesInsuranceCost(FeesInsuranceCostBase):
 #       	partials['C_FeesInsurance', 'C_PL'] = np.zeros((1, 1))
 #       	partials['C_FeesInsurance', 'F'] = np.zeros((1, 1))
 #       	partials['C_FeesInsurance', 'I'] = np.zeros((1, 1))
-#       	partials['C_FeesInsurance', 'P'] = np.zeros((1, 1))        
+#       	partials['C_FeesInsurance', 'PayCap'] = np.zeros((1, 1))        
