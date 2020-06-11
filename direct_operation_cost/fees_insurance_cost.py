@@ -14,15 +14,22 @@ class FeesInsuranceCost(FeesInsuranceCostBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            C_PL = inputs['C_PL']
+            F = inputs['F']
+            I = inputs['I']
+            P = inputs['P']
+
+            C_FeesInsurance = I + F + C_PL*P / 1000
                     
-            outputs['C_FeesInsurance'] = 1.0   
+            outputs['C_FeesInsurance'] = C_FeesInsurance
+        return outputs  
 
 # Reminder: inputs of compute()
 #   
 #       inputs['C_PL'] -> shape: 1, type: Float    
 #       inputs['F'] -> shape: 1, type: Float    
 #       inputs['I'] -> shape: 1, type: Float    
-#       inputs['p'] -> shape: 1, type: Float      
+#       inputs['P'] -> shape: 1, type: Float      
 	
 # To declare partial derivatives computation ...
 # 
@@ -36,4 +43,4 @@ class FeesInsuranceCost(FeesInsuranceCostBase):
 #       	partials['C_FeesInsurance', 'C_PL'] = np.zeros((1, 1))
 #       	partials['C_FeesInsurance', 'F'] = np.zeros((1, 1))
 #       	partials['C_FeesInsurance', 'I'] = np.zeros((1, 1))
-#       	partials['C_FeesInsurance', 'p'] = np.zeros((1, 1))        
+#       	partials['C_FeesInsurance', 'P'] = np.zeros((1, 1))        
