@@ -23,7 +23,7 @@ class Total(TotalBase):
             MAIT = inputs['MAIT']
             PO = inputs['PO']
 
-            Cdev = Cp * (PO + MAIT) * f0 * f1 * f3 * f10 * f11
+            Cdev = (Cp * (PO + MAIT)) * f0 * f1 * f3 * f10 * f11
 
             outputs['Cdev'] = Cdev
         return outputs  
