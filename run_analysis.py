@@ -15,6 +15,6 @@ pb.setup()
 initialize(pb)
 
 pb.run_model()   
-pb.model.list_inputs(print_arrays=True)
-pb.model.list_outputs(print_arrays=True)
+pb.model.list_inputs(print_arrays=False)
+pb.model.list_outputs(print_arrays=False)
 
