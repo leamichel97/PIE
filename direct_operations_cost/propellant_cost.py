@@ -14,8 +14,17 @@ class PropellantCost(PropellantCostBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['Cprop'] = 1.0   
+            Cf = inputs['Cf']    
+            Cox = inputs['Cox']   
+            Cpres = inputs['Cpres'] 
+            Mp = inputs['Mp']  
+            Mpres = inputs['Mpres'] 
+            r = inputs['r'] 
+
+            Cprop = ( (Mp/(r+1))*Cf + (Mp - Mp/(r+1)) * Cox + Mpres * Cpres) / 1000
+
+            outputs['Cprop'] = Cprop
+        return outputs   
 
 # Reminder: inputs of compute()
 #   

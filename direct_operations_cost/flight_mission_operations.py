@@ -13,9 +13,17 @@ class FlightMissionOperations(FlightMissionOperationsBase):
         if self._impl:
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
-        else:
-                    
-            outputs['Cmission'] = 1.0   
+        else:  
+            f8 = inputs['f8']       
+            L = inputs['L']
+            LpA = inputs['LpA']
+            Q_N = inputs['Q_N']
+            W = inputs['W']
+
+            Cmission = W * 20 * Q_N * (LpA**-0.65) * L * f8 / 1000 
+
+            outputs['Cmission'] = Cmission
+        return outputs     
 
 # Reminder: inputs of compute()
 #   

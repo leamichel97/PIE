@@ -14,8 +14,15 @@ class FeesInsuranceCost(FeesInsuranceCostBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            C_PL = inputs['C_PL']
+            F = inputs['F']
+            I = inputs['I']
+            PayCap = inputs['PayCap']
+
+            C_FeesInsurance = I + F + C_PL*PayCap / 1000
                     
-            outputs['C_FeesInsurance'] = 1.0   
+            outputs['C_FeesInsurance'] = C_FeesInsurance
+        return outputs  
 
 # Reminder: inputs of compute()
 #   

@@ -14,8 +14,20 @@ class GroundOperation(GroundOperationBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['C_GO'] = 1.0   
+            f11 = inputs['f11'] 
+            f8 = inputs['f8'] 
+            fc = inputs['fc'] 
+            fv = inputs['fv']  
+            L = inputs['L'] 
+            LpA = inputs['LpA']
+            M0 = inputs['M0']
+            Ns = inputs['Ns']
+            W = inputs['W']
+
+            C_GO = W * 8 * (M0 ** 0.67) * (LpA ** -0.9) * (Ns ** 0.7) * fc * fv * L * f8 * f11 / 1000
+
+            outputs['C_GO'] = C_GO
+        return outputs    
 
 # Reminder: inputs of compute()
 #   

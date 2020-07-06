@@ -14,8 +14,13 @@ class TransportationCost(TransportationCostBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
-                    
-            outputs['Ctransp'] = 1.0   
+            M0 = inputs['M0']  
+            Ts = inputs['Ts']    
+
+            Ctransp = Ts * M0
+
+            outputs['Ctransp'] = Ctransp
+        return outputs   
 
 # Reminder: inputs of compute()
 #   

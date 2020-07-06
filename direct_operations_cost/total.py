@@ -14,8 +14,16 @@ class Total(TotalBase):
             # Docking mechanism: use implementation if referenced in .whatsopt_dock.yml file
             self._impl.compute(inputs, outputs)
         else:
+            Cmission = inputs['Cmission']
+            Cprop = inputs['Cprop']
+            Ctransp = inputs['Ctransp']
+            C_FeesInsurance = inputs['C_FeesInsurance']
+            C_GO = inputs['C_GO']
+
+            C_DO = Cmission + Cprop + Ctransp + C_FeesInsurance + C_GO
                     
-            outputs['C_DO'] = 1.0   
+            outputs['C_DO'] = C_DO
+        return outputs    
 
 # Reminder: inputs of compute()
 #   
