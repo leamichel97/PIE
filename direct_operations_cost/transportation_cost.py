@@ -20,8 +20,7 @@ class TransportationCost(TransportationCostBase):
             Ctransp = Ts * M0
 
             outputs['Ctransp'] = Ctransp
-        return outputs   
-
+        return outputs 
 # Reminder: inputs of compute()
 #   
 #       inputs['M0'] -> shape: 1, type: Float    

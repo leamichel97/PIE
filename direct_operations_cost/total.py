@@ -24,6 +24,7 @@ class Total(TotalBase):
                     
             outputs['C_DO'] = C_DO
         return outputs    
+  
 
 # Reminder: inputs of compute()
 #   
